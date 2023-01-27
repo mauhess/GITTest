@@ -18,11 +18,9 @@ public class Gui extends JFrame{
     private JButton buttonMul;
     private JButton buttonDiv;
 
-    private String operator;
 
-    public Gui(String titel, String operator) {
+    public Gui(String titel) {
 
-        this.operator = operator;
 
         setTitle(titel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -52,7 +50,6 @@ public class Gui extends JFrame{
     private void initComponents(){
         labelOperand1 = new JLabel("1. Operand");
         labelOperand2 = new JLabel("2. Operand");
-        labelOperator = new JLabel(operator);
 
         fieldOperand1 = new JTextField(8);
         fieldOperand2 = new JTextField(8);
