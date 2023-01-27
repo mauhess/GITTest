@@ -13,7 +13,10 @@ public class Gui extends JFrame{
     private JTextField fieldOperand1;
     private JTextField fieldOperand2;
 
-    private JButton buttonRechnen;
+    private JButton buttonAdd;
+    private JButton buttonSub;
+    private JButton buttonMul;
+    private JButton buttonDiv;
 
     private String operator;
 
@@ -33,9 +36,12 @@ public class Gui extends JFrame{
         add(labelOperand1);
         add(labelOperand2);
         add(fieldOperand1);
-        add(labelOperator);
+        //add(labelOperator);
         add(fieldOperand2);
-        add(buttonRechnen);
+        add(buttonAdd);
+        add(buttonSub);
+        add(buttonMul);
+        add(buttonDiv);
 
         setLocationRelativeTo(null); // in the middle of screen
         setVisible(true);
@@ -51,25 +57,63 @@ public class Gui extends JFrame{
         fieldOperand1 = new JTextField(8);
         fieldOperand2 = new JTextField(8);
 
-        buttonRechnen = new JButton("Rechnen!");
+        buttonAdd = new JButton("+");
+        buttonSub = new JButton("-");
+        buttonMul = new JButton("*");
+        buttonDiv = new JButton("/");
+        buttonAdd.setPreferredSize(new Dimension(50,20));
+        buttonSub.setPreferredSize(new Dimension(50,20));
+        buttonMul.setPreferredSize(new Dimension(50,20));
+        buttonDiv.setPreferredSize(new Dimension(50,20));
 
-        buttonRechnen.addActionListener(new ActionListener() {
+
+        buttonAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int operand1 = Integer.parseInt(fieldOperand1.getText());
                 int operand2 = Integer.parseInt(fieldOperand2.getText());
-                int ergebnis;
-                if (operator.equals("+")) {
-                    ergebnis = operand1 + operand2;
-                } else if (operator.equals("-")) {
-                    ergebnis = operand1 - operand2;
-                } else if(operator.equals("*")) {
-                    ergebnis = operand1 * operand2;
-                } else if (operator.equals("/")) {
-                    ergebnis = operand1 / operand2;
-                } else {
-                    ergebnis = Integer.MAX_VALUE;
-                }
+                int ergebnis = operand1 + operand2;
+                JOptionPane.showMessageDialog(Gui.this, "Ergebnis : " + ergebnis, "Berechnet", JOptionPane.INFORMATION_MESSAGE);
+
+                fieldOperand1.setText("");
+                fieldOperand2.setText("");
+            }
+        });
+
+        buttonSub.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int operand1 = Integer.parseInt(fieldOperand1.getText());
+                int operand2 = Integer.parseInt(fieldOperand2.getText());
+                int ergebnis = operand1 - operand2;
+                JOptionPane.showMessageDialog(Gui.this, "Ergebnis : " + ergebnis, "Berechnet", JOptionPane.INFORMATION_MESSAGE);
+
+                fieldOperand1.setText("");
+                fieldOperand2.setText("");
+
+            }
+        });
+
+        buttonMul.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int operand1 = Integer.parseInt(fieldOperand1.getText());
+                int operand2 = Integer.parseInt(fieldOperand2.getText());
+                int ergebnis = operand1 * operand2;
+                JOptionPane.showMessageDialog(Gui.this, "Ergebnis : " + ergebnis, "Berechnet", JOptionPane.INFORMATION_MESSAGE);
+
+                fieldOperand1.setText("");
+                fieldOperand2.setText("");
+            }
+        });
+
+        buttonDiv.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float operand1 = Integer.parseInt(fieldOperand1.getText());
+                float operand2 = Integer.parseInt(fieldOperand2.getText());
+                float ergebnis = operand1 / operand2;
                 JOptionPane.showMessageDialog(Gui.this, "Ergebnis : " + ergebnis, "Berechnet", JOptionPane.INFORMATION_MESSAGE);
 
                 fieldOperand1.setText("");
